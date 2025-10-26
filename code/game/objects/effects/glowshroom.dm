@@ -49,7 +49,7 @@
 			if(L.throwing)
 				L.throwing.finalize(FALSE)
 			if(mover.loc != loc && L.stat == CONSCIOUS)
-				L.throw_at(get_step(L, throwdir), 1, 1, L, spin = FALSE)
+				L.throw_at(get_step(L, throwdir), pick(1,5), 1, L, spin = FALSE)
 			return FALSE
 	. = ..()
 
