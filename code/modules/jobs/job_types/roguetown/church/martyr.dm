@@ -441,6 +441,7 @@
 	display_order = JDO_MARTYR
 	give_bank_account = TRUE
 	cmode_music = 'sound/music/combat_martyrsafe.ogg'
+	social_rank = SOCIAL_RANK_NOBLE
 
 	job_traits = list(
 		TRAIT_HEAVYARMOR,
@@ -541,7 +542,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/roguemartyr_righthand.dmi'
 	name = "martyr sword"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
-	max_blade_int = 200
+	max_blade_int = 300
 	max_integrity = 300
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
@@ -572,6 +573,10 @@
 		added_int = 0,\
 		added_def = 0,\
 	)
+
+/obj/item/rogueweapon/sword/long/martyr/Initialize()
+	AddComponent(/datum/component/martyrweapon)
+	..()
 
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
 	if(ishuman(user))

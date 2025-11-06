@@ -16,6 +16,7 @@
 	spawn_positions = 4
 	advclass_cat_rolls = list(CTAG_TEMPLAR = 20)
 	display_order = JDO_TEMPLAR
+	social_rank = SOCIAL_RANK_MINOR_NOBLE
 
 	give_bank_account = TRUE
 
@@ -32,6 +33,18 @@
 		/datum/virtue/utility/blueblooded,
 		/datum/virtue/combat/vampire,
 	)
+
+/datum/job/roguetown/templar/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Brother"
+		if(should_wear_femme_clothes(H))
+			honorary = "Sister"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/templar
 	job_bitflag = BITFLAG_CHURCH
