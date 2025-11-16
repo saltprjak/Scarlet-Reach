@@ -12,6 +12,8 @@
 	is_subrace = TRUE
 	origin_default = /datum/virtue/origin/grenzelhoft
 	origin = "Grenzelhoft"
+	use_titles = TRUE
+	race_titles = list("Half-Cat", "Half-Dog", "Half-Wolf", "Half-Lion", "Half-Venard", "Half-Tiger", "Half-Sheep", "Half-Goat", "Half-Rat", "Half-Pig", "Half-Boar", "Half-Rabbit", "Half-Horse", "Half-Hyena", "Half-Deer", "Half-Bear", "Half-Panda", "Half-Coyote", "Half-Jackal", "Half-Panther", "Half-Lynx", "Half-Seal", "Half-Bat", "Half-Otter", "Half-Cow", "Half-Bull", "Half-Monster")
 	base_name = "Humen"
 	desc = "<b>Half-Kin: A Beastblood Thinned	</b><br>\
 	The result of union between the major or minor furskinned species, and the humanlike races of the world. \
