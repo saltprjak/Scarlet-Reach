@@ -353,6 +353,11 @@
 	desc = "This is my sanctuary. I can overpower any opposition that dares breach it."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/underdarkbuff
+	name = "Underdark Ancestry"
+	desc = "This is where my people come from. I can find my way easily in these depths."
+	icon_state = "buff"
+
 /atom/movable/screen/alert/status_effect/buff/churchbuff
 	name = "Church Defender"
 	desc = "This holy ground grants me the power to quash any dissent here."
@@ -389,6 +394,11 @@
 	id = "dungeoneerbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dungeoneerbuff
 	effectedstats = list("constitution" = 1,"endurance" = 1, "strength" = 2)//This only works in 2 small areas on the entire map
+
+/datum/status_effect/buff/underdark
+	id = "underdarkbuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/underdarkbuff
+	effectedstats = list("perception" = 1)
 
 /datum/status_effect/buff/churchbuff/process()
 
@@ -434,6 +444,21 @@
 /datum/status_effect/buff/dungeoneerbuff/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_CIVILIZEDBARBARIAN, id)
+
+/datum/status_effect/buff/underdark/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.underdark_area))
+		owner.remove_status_effect(/datum/status_effect/buff/underdark)
+
+/datum/status_effect/buff/underdark/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_UNDERSIGHT, id)
+
+/datum/status_effect/buff/underdark/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_UNDERSIGHT, id)
 
 /atom/movable/screen/alert/status_effect/buff/healing//lesser miracle
 	name = "Healing Miracle"
