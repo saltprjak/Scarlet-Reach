@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
 	TRAIT_MANIAC_AWOKEN = span_danger("I am <b>WAKING UP</b> and the sheeple know this. They will resist."),
 	TRAIT_INFINITE_STAMINA = "I have boundless energy, I will never tire.",
-	TRAIT_SLOW_SWIMMER = "My anatomy struggles to traverse through water quickly."
+	TRAIT_SLOW_SWIMMER = "My anatomy struggles to traverse through water quickly.",
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
 	TRAIT_CYCLOPS_LEFT = span_warning("My left eye has been poked out..."),
 	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
