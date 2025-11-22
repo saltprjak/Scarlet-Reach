@@ -580,6 +580,8 @@
 			continue
 		returned_flags |= SURGERY_INCISED
 		break
+	if(owner?.dna?.species?.construct == TRUE) // Construct snowflake check.
+		returned_flags |= SURGERY_INCISED | SURGERY_BLOODY
 	var/static/list/retracting_behaviors = list(
 		TOOL_RETRACTOR,
 		TOOL_CROWBAR,
