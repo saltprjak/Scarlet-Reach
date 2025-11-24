@@ -416,7 +416,7 @@
 					user.say("I pray for pain...")
 					playsound(loc, 'sound/vo/mobs/vw/idle (4).ogg', 100, FALSE, -1)
 					if(do_after(user, 50))
-						loc.visible_message(span_warning("[user] laughs with soft creeks and weeps, they twitch ever so slightly..."))
+						loc.visible_message(span_warning("[user] produces an eerie as they titter quietly, softly weeping. Their body twitches ever so slightly..."))
 						playsound(loc, 'sound/vo/mobs/vw/bark (1).ogg', 100, FALSE, -1)
 						if(do_after(user, 30))
 							icon_state = "dendor_active"
