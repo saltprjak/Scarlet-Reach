@@ -31,17 +31,43 @@ SUBSYSTEM_DEF(familytree)
 	var/list/viable_spouses = list()
 	//These jobs are excluded from AddLocal()
 	var/excluded_jobs = list(
+		/datum/job/roguetown/lord,
+		/datum/job/roguetown/suitor,
+		/datum/job/roguetown/lady,
+		/datum/job/roguetown/prince,
+		/datum/job/roguetown/hand,
+		/datum/job/roguetown/nightmaiden,
+		/datum/job/roguetown/prisonerr,
+		/datum/job/roguetown/wretch,
+		/datum/job/roguetown/bandit,
+		/datum/job/roguetown/absolver,
+		/datum/job/roguetown/orthodoxist,
+		/datum/job/roguetown/puritan,
 		)
 	//This creates 2 families for each race roundstart so that siblings dont fail to be added to a family.
 	var/list/preset_family_species = list(
 		/datum/species/human/northern,
-		/datum/species/elf,
-		/datum/species/elf/dark,
 		/datum/species/human/halfelf,
+		/datum/species/elf/dark,
+		/datum/species/elf/wood,
 		/datum/species/dwarf/mountain,
 		/datum/species/tieberian,
 		/datum/species/aasimar,
-		/datum/species/halforc
+		/datum/species/lizardfolk,
+		/datum/species/lupian,
+		/datum/species/tabaxi,
+		/datum/species/vulpkanin,
+		/datum/species/akula,
+		/datum/species/moth,
+		/datum/species/dracon,
+		/datum/species/anthromorph,
+		/datum/species/demihuman,
+		/datum/species/halforc,
+		/datum/species/kobold,
+		/datum/species/goblinp,
+		/datum/species/dullahan,
+		/datum/species/lamia,
+		/datum/species/harpy,
 		)
 
 /datum/controller/subsystem/familytree/Initialize()
@@ -467,7 +493,7 @@ SUBSYSTEM_DEF(familytree)
 				return
 
 	// Create entirely new house if no match found
-	if(our_species != /datum/species/aasimar)
+	if(our_species != "Aasimar" || our_species != "Construct")
 		var/datum/heritage/new_house = new /datum/heritage(H, null, our_species)
 		families += new_house
 
