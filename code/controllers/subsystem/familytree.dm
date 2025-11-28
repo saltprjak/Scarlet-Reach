@@ -509,7 +509,7 @@ SUBSYSTEM_DEF(familytree)
 				return
 
 	// Create entirely new house if no match found
-	if(our_subrace != /datum/species/aasimar)
+	if(our_subrace != "Aasimar" && our_subrace != "Doll" && our_subrace != "Golem")
 		var/datum/heritage/new_house = new /datum/heritage(H, null, our_subrace)
 		families += new_house
 
