@@ -311,11 +311,12 @@ var/global/list/PATRON_ARTIFACTS = list(
 	name = "sacred artefact"
 	desc = "A token blessed by a patron."
 	var/patron_name = ""
-	New(loc, p_name)
-		..()
-		if(istext(p_name))
-			patron_name = p_name
-			name = "Sacred Artefact of [p_name]"
+
+/obj/item/church_artefact/New(loc, p_name)
+	. = ..()
+	if(istext(p_name))
+		patron_name = p_name
+		name = "Sacred Artefact of [p_name]"
 
 // SPELL
 /obj/effect/proc_holder/spell/self/learnmiracle
@@ -932,9 +933,7 @@ var/global/list/PATRON_ARTIFACTS = list(
 
 		var/list/P = D["params"]
 		if(islist(P))
-			if(istype(QI, /obj/item/quest_token/antag_find))
-				var/obj/item/quest_token/antag_find/AF = QI
-				if(P["allowed_tiers"]) AF.allowed_tiers = P["allowed_tiers"]
+			// YES WE KEEP PARAM WIRING FOR EXISTING TOKENS
 			if(istype(QI, /obj/item/quest_token/coin_chest))
 				var/obj/item/quest_token/coin_chest/CC = QI
 				if(P["required_sum"]) CC.required_sum = P["required_sum"]
@@ -1000,7 +999,7 @@ var/global/list/PATRON_ARTIFACTS = list(
 		var/cur = H.patron_relations[god]
 		if(!isnum(cur)) cur = 0
 
-		// ***** MINIMAL CHANGE: hard cap templar relations at 2 *****
+		// ***************  hard cap templar relations at 2 *****
 		if(_is_templar(H) && cur >= 2) { open_research_ui(H); return }
 		// ***********************************************************
 
@@ -1008,7 +1007,7 @@ var/global/list/PATRON_ARTIFACTS = list(
 
 		var/next = cur + 1
 
-		// ***** MINIMAL CHANGE: block upgrade above 2 for templars *****
+		// *************** block upgrade above 2 for templars *****
 		if(_is_templar(H) && next > 2) { open_research_ui(H); return }
 		// **************************************************************
 

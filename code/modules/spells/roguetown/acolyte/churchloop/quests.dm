@@ -94,7 +94,7 @@
 
 	return FALSE
 
-proc/_rt_effect_type_name(T)
+/proc/_rt_effect_type_name(T)
 	if(!ispath(T, /datum/status_effect))
 		return "[T]"
 	var/datum/status_effect/E = new T
@@ -334,7 +334,6 @@ proc/_rt_effect_type_name(T)
 
 /proc/_rt_all_job_types_master()
 	var/list/L = list(
-		// MANOR_ROLES
 		/datum/job/roguetown/jester,
 		/datum/job/roguetown/veteran,
 		/datum/job/roguetown/clerk,
@@ -343,8 +342,6 @@ proc/_rt_effect_type_name(T)
 		/datum/job/roguetown/butler,
 		/datum/job/roguetown/apothecary,
 		/datum/job/roguetown/magician,
-
-		// NOBLE_ROLES
 		/datum/job/roguetown/prince,
 		/datum/job/roguetown/councillor,
 		/datum/job/roguetown/physician,
@@ -355,8 +352,6 @@ proc/_rt_effect_type_name(T)
 		/datum/job/roguetown/lady,
 		/datum/job/roguetown/lord,
 		/datum/job/roguetown/steward,
-
-		// PEASANT_ROLES
 		/datum/job/roguetown/villager,
 		/datum/job/roguetown/nightmaiden,
 		/datum/job/roguetown/beggar,
@@ -366,8 +361,6 @@ proc/_rt_effect_type_name(T)
 		/datum/job/roguetown/farmer,
 		/datum/job/roguetown/orphan,
 		/datum/job/roguetown/shophand,
-
-		// YEOMEN_ROLES
 		/datum/job/roguetown/elder,
 		/datum/job/roguetown/niteman,
 		/datum/job/roguetown/loudmouth,
@@ -377,15 +370,11 @@ proc/_rt_effect_type_name(T)
 		/datum/job/roguetown/guildsman,
 		/datum/job/roguetown/tailor,
 		/datum/job/roguetown/merchant,
-
-		// WANDERER_ROLES
 		/datum/job/roguetown/pilgrim,
 		/datum/job/roguetown/adventurer,
 		/datum/job/roguetown/mercenary,
 		/datum/job/roguetown/bandit,
 		/datum/job/roguetown/wretch,
-
-		// GARRISON_ROLES
 		/datum/job/roguetown/warden,
 		/datum/job/roguetown/sergeant,
 		/datum/job/roguetown/dungeoneer,
@@ -401,6 +390,17 @@ proc/_rt_effect_type_name(T)
 			out += T
 	return out
 
+// GLOBAL
+var/global/list/Q_WITNESS_EFFECTS = list(
+	/datum/status_effect/buff/sermon,
+	/datum/status_effect/buff/drunk,
+	/datum/status_effect/buff/foodbuff,
+	/datum/status_effect/buff/ozium,
+	/datum/status_effect/buff/moondust,
+	/datum/status_effect/buff/moondust_purest,
+	/datum/status_effect/buff/starsugar,
+	/datum/status_effect/buff/weed
+)
 
 // ---------------------------------------------------------------------
 //
@@ -535,13 +535,11 @@ proc/_rt_effect_type_name(T)
 // ---------------------------------------------------------------------
 
 /*
-
-// 1) Enemy of the Faith NOT BLACK OACK
 /obj/item/quest_token/antag_find
 	name = "insight sigil"
 	desc = "Gather forbidden knowledge from the enemy."
 	icon_state = "questflaw"
-	var/list/allowed_tiers = list() // 1/2/3
+	var/list/allowed_tiers = list()
 
 /obj/item/quest_token/antag_find/attack(target, user)
 	if(!istype(target, /mob/living/carbon/human)) return ..()
@@ -571,8 +569,6 @@ proc/_rt_effect_type_name(T)
 		to_chat(user, span_notice("No forbidden taint of that caliber is found. The sigil is spent."))
 
 	qdel(src)
-
-
 */
 
 // 2) Find Expertise
@@ -670,7 +666,6 @@ proc/_rt_effect_type_name(T)
 		to_chat(user, span_warning("You are under the Edict and cannot perform another routine."))
 		return
 
-	// yes they are going to put shit into we are not bandits arent we to suffer from same shit
 	if(istype(I, /obj/item/roguecoin/aalloy)) return
 	if(istype(I, /obj/item/roguecoin/inqcoin)) return
 
@@ -729,7 +724,6 @@ proc/_rt_effect_type_name(T)
 			. += "<br><span class='notice'>Divine insight: <b>[code]</b></span>"
 		else
 			. += "<br><span class='info'>Followers of [jointext(bonus_patron_names, ", ")] see the code clearly.</span>"
-
 
 /obj/item/quest_token/reliquary/proc/_ensure_ui_access(mob/living/user)
 	if(!user) return FALSE
@@ -854,7 +848,7 @@ proc/_rt_effect_type_name(T)
 
 	var/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice/B = new /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice(get_turf(H))
 	if(istype(H, /mob/living/carbon/human))
-		if(hascall(H, "put_in_hands")) //tg moment the coder is a retard but if it works if works
+		if(hascall(H, "put_in_hands"))
 			var/success = call(H, "put_in_hands")(B)
 			if(!success)
 				B.forceMove(get_turf(H))
@@ -893,7 +887,6 @@ proc/_rt_effect_type_name(T)
 	to_chat(user, span_warning("This is not an acceptable offering."))
 
 // 8) Minor Sermon
-
 
 /obj/item/quest_token/sermon_minor
 	name = "sermon token"
@@ -955,23 +948,21 @@ proc/_rt_effect_type_name(T)
 	return TRUE
 
 
-// 9) Witness the Sermon
+// 9) Witness the Sermon (replaced with find a buff)
 
 /obj/item/quest_token/sermon_witness
 	name = "pharmacology probe"
 	desc = "Record the reaction: the target must bear an allowed effect."
 	icon_state = "questflaw"
+	var/list/required_effect_types = list()
 
-	var/global/list/Q_WITNESS_EFFECTS = list(
-		/datum/status_effect/buff/sermon,
-		/datum/status_effect/buff/drunk,
-		/datum/status_effect/buff/foodbuff,
-		/datum/status_effect/buff/ozium,
-		/datum/status_effect/buff/moondust,
-		/datum/status_effect/buff/moondust_purest,
-		/datum/status_effect/buff/starsugar,
-		/datum/status_effect/buff/weed
-	)
+/obj/item/quest_token/sermon_witness/Initialize()
+	. = ..()
+	if(!islist(required_effect_types) || !required_effect_types.len)
+		if(islist(Q_WITNESS_EFFECTS) && Q_WITNESS_EFFECTS.len)
+			required_effect_types = Q_WITNESS_EFFECTS.Copy()
+		else
+			required_effect_types = list(/datum/status_effect/buff/sermon)
 
 /obj/item/quest_token/sermon_witness/attack(target, user)
 	if(!istype(target, /mob/living/carbon/human))
@@ -1009,7 +1000,6 @@ proc/_rt_effect_type_name(T)
 	_apply_quest_lock(H)
 	_payout(reward_amount)
 	qdel(src)
-
 
 
 // 10) Researchment of Addiction
@@ -1066,14 +1056,9 @@ proc/_rt_effect_type_name(T)
 		pool = list("Astrata","Noc","Dendor","Abyssor","Ravox","Necra","Xylix","Pestra","Malum","Eora")
 	return pool
 
-
 /proc/_rt_build_full_quest_set(mob/living/carbon/human/H)
 	if(!H) return list()
 	var/list/archetypes = list()
-
-	//---------------------------------------------------
-	// LISTS I LOVE LISTS
-	//---------------------------------------------------
 
 	var/list/skill_cands = list()
 	for(var/t in typesof(/datum/skill))
@@ -1114,10 +1099,6 @@ proc/_rt_effect_type_name(T)
 		if(t2 != /datum/charflaw)
 			flaw_cands += t2
 
-	//---------------------------------------------------
-	// tables but its all 100 200 300 anyway dont ask me
-	//---------------------------------------------------
-
 	var/list/diff_generic = list(
 		"easy"   = list("count" = 5, "reward" = 100),
 		"medium" = list("count" = 3, "reward" = 150),
@@ -1130,51 +1111,6 @@ proc/_rt_effect_type_name(T)
 		"hard"   = list("required_sum" = 500, "reward" = 200)
 	)
 
-	var/list/diff_antag = list(
-		"easy"   = list("tiers" = list(1), "reward" = 100),
-		"medium" = list("tiers" = list(2), "reward" = 150),
-		"hard"   = list("tiers" = list(3), "reward" = 200)
-	)
-
-	//---------------------------------------------------
-	// 1) antag_find
-	//---------------------------------------------------
-	var/list/antag_diffs = list()
-	for(var/dn in diff_antag)
-		var/list/D = diff_antag[dn]
-		var/list/tiers = D["tiers"]
-		var/rew = D["reward"]
-
-		var/desc_txt = "Gather forbidden knowledge from an enemy."
-		if(dn == "easy")
-			// tier1
-			desc_txt = "Interrogate an outlaw (bandit or wretch)."
-		else if(dn == "medium")
-			// tier2
-			desc_txt = "Confront a cursed beast (werewolf) or vampire."
-		else if(dn == "hard")
-			// tier3
-			desc_txt = "Face an ancient evil (vampire lord or lich)."
-
-		antag_diffs[dn] = list(
-			"diff"       = dn,
-			"desc"       = desc_txt,
-			"reward"     = rew,
-			"token_path" = /obj/item/quest_token/antag_find,
-			"params"     = list("allowed_tiers" = tiers),
-			"spawned"    = FALSE
-		)
-
-	archetypes += list(list(
-		"kind"          = "antag_find",
-		"title"         = "The Enemy of the Faith",
-		"accepted_diff" = "",
-		"difficulties"  = antag_diffs
-	))
-
-	//---------------------------------------------------
-	// 2) coin_chest
-	//---------------------------------------------------
 	var/list/tithe_diffs = list()
 	for(var/dn4 in diff_tithe)
 		var/list/D4 = diff_tithe[dn4]
@@ -1197,9 +1133,6 @@ proc/_rt_effect_type_name(T)
 		"difficulties"  = tithe_diffs
 	))
 
-	//---------------------------------------------------
-	// 3) skill_bless
-	//---------------------------------------------------
 	var/list/skill_diffs = list()
 	for(var/dn2 in diff_generic)
 		var/list/D2 = diff_generic[dn2]
@@ -1229,9 +1162,6 @@ proc/_rt_effect_type_name(T)
 			"difficulties"  = skill_diffs
 		))
 
-	//---------------------------------------------------
-	// 4) blood_draw
-	//---------------------------------------------------
 	var/list/blood_diffs = list()
 	for(var/dn3 in diff_generic)
 		var/list/D3 = diff_generic[dn3]
@@ -1263,10 +1193,6 @@ proc/_rt_effect_type_name(T)
 			"accepted_diff" = "",
 			"difficulties"  = blood_diffs
 		))
-
-	//---------------------------------------------------
-	// 5) ration_delivery
-	//---------------------------------------------------
 
 	var/list/ration_diffs = list()
 	for(var/dn6 in diff_generic)
@@ -1300,9 +1226,6 @@ proc/_rt_effect_type_name(T)
 			"difficulties"  = ration_diffs
 		))
 
-	//---------------------------------------------------
-	// 6) donation_box
-	//---------------------------------------------------
 	var/list/donate_diffs = list()
 	for(var/dn7 in diff_generic)
 		var/list/D7 = diff_generic[dn7]
@@ -1334,9 +1257,6 @@ proc/_rt_effect_type_name(T)
 			"difficulties"  = donate_diffs
 		))
 
-	//---------------------------------------------------
-	// 7) sermon_minor
-	//---------------------------------------------------
 	var/list/sermon_minor_diffs = list()
 	for(var/dn8 in diff_generic)
 		var/list/D8 = diff_generic[dn8]
@@ -1365,10 +1285,6 @@ proc/_rt_effect_type_name(T)
 			"difficulties"  = sermon_minor_diffs
 		))
 
-	//---------------------------------------------------
-	// 8) reliquary)
-	//---------------------------------------------------
-
 	var/list/box_diffs = list()
 	for(var/dn5 in diff_generic)
 		var/list/D5 = diff_generic[dn5]
@@ -1396,13 +1312,6 @@ proc/_rt_effect_type_name(T)
 			"accepted_diff" = "",
 			"difficulties"  = box_diffs
 		))
-
-	//---------------------------------------------------
-	// 9) sermon_witness aka Record the Reaction
-
-//---------------------------------------------------
-// 9) sermon_witness aka Record the Reaction
-//---------------------------------------------------
 
 	var/list/witness_diffs = list()
 	for(var/dn9 in diff_generic)
@@ -1437,9 +1346,6 @@ proc/_rt_effect_type_name(T)
 		"difficulties"  = witness_diffs
 	))
 
-	//---------------------------------------------------
-	// 10) flaw_aid
-	//---------------------------------------------------
 	var/list/flaw_diffs = list()
 	for(var/dn10 in diff_generic)
 		var/list/D10 = diff_generic[dn10]
@@ -1485,14 +1391,12 @@ proc/_rt_effect_type_name(T)
 			out[j] = tmp
 	return out
 
-
-//  pickme "kind", "title", "accepted_diff"="", "difficulties"=list(easy/med/hard), "difficulties"[diff]: "desc","reward","token_path","params","spawned"=FALSE
 /proc/_rt_build_player_quest_set(mob/living/carbon/human/H)
 	if(!H) return list()
 	var/list/full = _rt_build_full_quest_set(H)
 	if(!islist(full) || !full.len)
 		return list()
-	full = _rt_shuffle_list(full)  //card shit card shit
+	full = _rt_shuffle_list(full)
 
 	var/list/final_list = list()
 	var/list/used_kinds = list()
