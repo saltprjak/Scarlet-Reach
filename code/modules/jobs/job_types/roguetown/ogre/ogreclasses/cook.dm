@@ -2,7 +2,7 @@
 	name = "Cook-Cook"
 	tutorial = "Having travelled most of the known world, and serving in the noble courts of both humans and dwarves, you are among the truly legendary chefs of the modern era! You have no qualms working alongside the stunties, for they keep the ingredients flowing to your beautiful art."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = /datum/species/ogre
 	outfit = /datum/outfit/job/roguetown/ogre/cook
 	category_tags = list(CTAG_OGRE)
 
