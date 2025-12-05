@@ -5,7 +5,7 @@
 #define DANGER_LEVEL_DANGEROUS "Dangerous"
 #define DANGER_LEVEL_BLEAK "Bleak"
 
-#define THREAT_REGION_SCARLET_BASIN "Scarlet Basin"
+#define THREAT_REGION_BLACK_BASIN "Black Basin"
 #define THREAT_REGION_NORTHERN_GROVE "Northern Grove"
 #define THREAT_REGION_OUTER_GROVE "Outer Grove" // Grove west of the road
 #define THREAT_REGION_SOUTH_SCARLET_COAST "South Scarlet Coast"
@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(regionthreat)
 	// The first four regions are meant to be "tameable" for towner purposes
 	var/list/threat_regions = list(
 		new /datum/threat_region(
-			_region_name = THREAT_REGION_SCARLET_BASIN, 
+			_region_name = THREAT_REGION_BLACK_BASIN, 
 			_latent_ambush = DANGER_LOW_FLOOR,
 			_min_ambush = DANGER_SAFE_FLOOR,
 			_max_ambush = DANGER_DANGEROUS_LIMIT, // Let's not go DIRE no matter what, in the future 
@@ -45,16 +45,16 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_SOUTH_SCARLET_COAST,
 			_latent_ambush = DANGER_DANGEROUS_FLOOR,
 			_min_ambush = DANGER_SAFE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 1
 		),
 		new /datum/threat_region(
 			_region_name = THREAT_REGION_TERRORBOG,
-			_latent_ambush = DANGER_DIRE_LIMIT,
+			_latent_ambush = DANGER_BLEAK_LIMIT,
 			_min_ambush = DANGER_SAFE_FLOOR, // This is intended. A warden can engage in a long war to tame the terrorbog.
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 2
@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_OUTER_GROVE,
 			_latent_ambush = DANGER_MODERATE_LIMIT,
 			_min_ambush = DANGER_MODERATE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 2
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_NORTH_SCARLET_COAST,
 			_latent_ambush = DANGER_DANGEROUS_FLOOR,
 			_min_ambush = DANGER_MODERATE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 2
@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_MOUNT_DECAP,
 			_latent_ambush = DANGER_DANGEROUS_FLOOR,
 			_min_ambush = DANGER_MODERATE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 2

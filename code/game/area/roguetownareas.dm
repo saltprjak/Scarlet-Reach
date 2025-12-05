@@ -177,8 +177,10 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				new /datum/ambush_config/trio_of_highwaymen = 10,
 				new /datum/ambush_config/singular_minotaur = 10,
 				new /datum/ambush_config/duo_minotaur = 5,
-				new /datum/ambush_config/solo_treasure_hunter = 10,
-				new /datum/ambush_config/duo_treasure_hunter = 1
+				new /datum/ambush_config/solo_treasure_hunter = 15,
+				new /datum/ambush_config/duo_treasure_hunter = 2,
+				new /datum/ambush_config/medium_skeleton_party = 10,
+				new /datum/ambush_config/heavy_skeleton_party = 5,
 				)
 	droning_sound = 'sound/music/area/decap.ogg'
 	droning_sound_dusk = null
@@ -253,15 +255,14 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf/bobcat = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 50,
-				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30,
-				/mob/living/carbon/human/species/npc/deadite = 30)
+				/mob/living/simple_animal/hostile/retaliate/rogue/fox = 30,
+				/mob/living/carbon/human/species/skeleton/npc/supereasy = 30)
 	first_time_text = "BLACK BASIN"
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/rtfield
-	threat_region = THREAT_REGION_SCARLET_BASIN
+	threat_region = THREAT_REGION_BLACK_BASIN
 
 /area/rogue/indoors/shelter/rtfield
 	icon_state = "rtfield"
@@ -318,10 +319,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/grass)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
-				/mob/living/carbon/human/species/npc/deadite = 10,
-				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30,
-				/mob/living/carbon/human/species/goblin/npc/ambush = 30)
+				/mob/living/carbon/human/species/skeleton/npc/easy = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
+				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
 	first_time_text = "THE SCARLET GROVE"
 	converted_type = /area/rogue/indoors/shelter/woods
 	threat_region = THREAT_REGION_OUTER_GROVE
@@ -385,6 +385,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		/mob/living/carbon/human/species/skeleton/npc/hard = 10,
 		/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
+
 /area/rogue/outdoors/woods/northwest
 	name = "Scarlet Grove - Northwest"
 	ambush_mobs = list(
@@ -393,7 +394,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		/mob/living/carbon/human/species/skeleton/npc/hard = 10,
 		/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
-
 /area/rogue/outdoors/river
 	name = "river"
 	icon_state = "river"
@@ -425,12 +425,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/water)
 	//Minotaurs too strong for the lazy amount of places this area covers
 	ambush_mobs = list(
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll/bog = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
 				/mob/living/carbon/human/species/skeleton/npc/bogguard = 20,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
+				new /datum/ambush_config/bog_guard_deserters = 50,		
+				new /datum/ambush_config/bog_guard_deserters/hard = 25,
 				new /datum/ambush_config/mirespiders_ambush = 110,
 				new /datum/ambush_config/mirespiders_crawlers = 25,
 				new /datum/ambush_config/mirespiders_aragn = 10,
@@ -445,6 +445,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+//Not currently used for anything, but ported incase it's useful later.
+/area/rogue/outdoors/bog/north
+	name = "Northern Terrorbog"
+
+/area/rogue/outdoors/bog/south
+	name = "Southern Terrorbog"
+
 /area/rogue/outdoors/bog/dense
 	name = "dense bog"
 
@@ -458,6 +465,27 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/under/lake
+	first_time_text = "CENTRAL COAST"
+/area/rogue/outdoors/beach/north
+	name = "Northern Coast"
+	ambush_mobs = list(
+		/mob/living/carbon/human/species/human/northern/searaider/ambush = 10,
+		/mob/living/carbon/human/species/goblin/npc/ambush/sea = 20,
+		/mob/living/carbon/human/species/orc/npc/berserker = 10,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mossback = 40
+	)
+	first_time_text = "NORTHERN COAST"
+
+/area/rogue/outdoors/beach/south
+	name = "Southern Coast"
+	ambush_mobs = list(
+		/mob/living/carbon/human/species/human/northern/searaider/ambush = 5,
+		/mob/living/carbon/human/species/goblin/npc/ambush/sea = 20,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mossback = 10,
+		new /datum/ambush_config/triple_deepone = 30,
+		new /datum/ambush_config/deepone_party = 20,
+	)
+	first_time_text = "SOUTHERN COAST"
 
 /area/rogue/outdoors/beach/forest
 	name = "coastforest"
@@ -482,6 +510,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/direbear = 15,
 				/mob/living/carbon/human/species/human/northern/searaider/ambush = 10,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30,
+				/mob/living/carbon/human/species/orc/npc/footsoldier = 10, 
+				/mob/living/carbon/human/species/orc/npc/berserker = 10,
+				/mob/living/carbon/human/species/orc/npc/marauder = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40)
 	first_time_text = "THE SCARLET COAST"
 	converted_type = /area/rogue/indoors/shelter/woods
