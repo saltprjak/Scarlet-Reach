@@ -199,6 +199,12 @@
 		user.visible_message(span_danger("[user] attempts to feint an attack at [L], but only makes a fool of themselves!"))
 		user.OffBalance(3 SECONDS)
 		user.apply_status_effect(/datum/status_effect/debuff/feintcd)
+		for(var/mob/living/carbon/human/H in view(7, user))
+			if(H == user || !H.client)
+				continue
+			if(HAS_TRAIT(H, TRAIT_XYLIX) && !H.has_status_effect(/datum/status_effect/buff/xylix_joy))
+				H.apply_status_effect(/datum/status_effect/buff/xylix_joy)
+				to_chat(H, span_info("Such a curt display of hubris amuses the Laughing God!"))
 		return
 	else
 		user.visible_message(span_danger("[user] feints an attack at [target]!"))
