@@ -3,7 +3,7 @@
 	skin_tone = SKIN_COLOR_GROONN
 	hairstyle = "Bald"
 	facial_hairstyle = "Shaved"
-	var/orc_outfit = /datum/outfit/job/roguetown/orc/npc
+	var/orc_outfit = /datum/outfit/job/orc/npc
 
 	race = /datum/species/orc
 	gender = MALE
@@ -22,12 +22,7 @@
 	wander = FALSE
 	cmode_music = FALSE
 
-/mob/living/carbon/human/species/orc/npc/Initialize()
-	. = ..()
-	set_species(/datum/species/orc)
-	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
-
-/mob/living/carbon/human/species/orc/npc/after_creation()
+/datum/outfit/job/orc/npc/pre_equip(mob/living/carbon/human/H) //gives some default skills and equipment for player controlled orcs
 	..()
 	job = "Savage Orc"
 	equipOutfit(new orc_outfit)
