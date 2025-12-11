@@ -3,7 +3,7 @@
 	tutorial = "You are a seasoned weapon specialist, clad in maille, with years of experience in warfare and battle under your belt."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
+	outfit = /datum/outfit/job/adventurer/sfighter
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT, CTAG_LICKER_WRETCH)
 	class_select_category = CLASS_CAT_WARRIOR
 	subclass_social_rank = SOCIAL_RANK_PEASANT
@@ -29,13 +29,13 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 	)
 
-/datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("You are a seasoned weapon specialist, clad in maille, with years of experience in warfare and battle under your belt."))
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	var/weapons = list("Longsword","Mace","Billhook","Battle Axe","Short Sword & Iron Shield")
-	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Longsword")
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
@@ -55,7 +55,7 @@
 			backr = /obj/item/rogueweapon/shield/iron
 			beltr = /obj/item/rogueweapon/sword/iron/short
 	var/armors = list("Chainmaille Set","Iron Breastplate","Gambeson & Helmet")
-	var/armor_choice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
+	var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
 	switch(armor_choice)
 		if("Chainmaille Set")
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
@@ -82,7 +82,7 @@
 /datum/advclass/sfighter/barbarian
 	name = "Barbarian"
 	tutorial = "YOU BREAK THE WEAK WITH YOUR HANDS AND VARIOUS OTHER SHARP OBJECTS IN YOUR IMMEDIATE VICINITY. NUMBERS DON'T WORK SO GOOD, BUT YOU CAN DO THE REAL MATH THAT MATTERS: DIVISION. WITH YOUR BARE HANDS!!!"
-	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
+	outfit = /datum/outfit/job/adventurer/barbarian
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	subclass_stats = list(
 		STATKEY_STR = 3,
@@ -103,9 +103,9 @@
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 	)
 
-/datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)
 	var/weapons = list("Katar","Axe","Sword","Club","Spear","MY BARE HANDS!!!")
-	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if ("Katar")
 			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
@@ -157,7 +157,7 @@
 /datum/advclass/sfighter/duelist
 	name = "Duelist"
 	tutorial = "You are an esteemed swordsman who foregoes armor in exchange for a more nimble fighting style."
-	outfit = /datum/outfit/job/roguetown/adventurer/duelist
+	outfit = /datum/outfit/job/adventurer/duelist
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_DECEIVING_MEEKNESS)
 	subclass_stats = list(
 		STATKEY_STR = 1,
@@ -178,9 +178,9 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
 	)
 
-/datum/outfit/job/roguetown/adventurer/duelist/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/adventurer/duelist/pre_equip(mob/living/carbon/human/H)
 	var/weapons = list("Rapier","Dagger")
-	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Rapier")
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
@@ -208,7 +208,7 @@
 /datum/advclass/sfighter/monster_hunter
 	name = "Monster Hunter"
 	tutorial = "Otavan lamplighters, Tennite Saintsmen and heathens looking to make their coin hunting the most dangerous game: all make up the profession known as being a 'Monster Hunter.' Warriors who carry two blades - one of silver for monsters, and one of steel for men."
-	outfit = /datum/outfit/job/roguetown/adventurer/monster_hunter
+	outfit = /datum/outfit/job/adventurer/monster_hunter
 	traits_applied = list(TRAIT_STEELHEARTED)	//You hunt beasts for a living, you saaw some #shit
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
 	subclass_stats = list(
@@ -233,7 +233,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_NOVICE,
 	)
 
-/datum/outfit/job/roguetown/adventurer/monster_hunter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/adventurer/monster_hunter/pre_equip(mob/living/carbon/human/H)
 	H.cmode_music = 'sound/music/inquisitorcombat.ogg'
 	if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT)) 
 		backl = /obj/item/storage/backpack/rogue/satchel/otavan
@@ -335,7 +335,7 @@
 /datum/advclass/sfighter/flagellant
 	name = "Flagellant"
 	tutorial = "You are a pacifistic warrior who embraces suffering, believing pain is the path to enlightenment. You take the suffering of others upon yourself."
-	outfit = /datum/outfit/job/roguetown/adventurer/flagellant
+	outfit = /datum/outfit/job/adventurer/flagellant
 	subclass_social_rank = SOCIAL_RANK_DIRT
 
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_DODGEEXPERT)
@@ -357,7 +357,7 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
 	)
 
-/datum/outfit/job/roguetown/adventurer/flagellant/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/adventurer/flagellant/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	..()
 	to_chat(H, span_warning("You are a pacifistic warrior who embraces suffering, believing pain is the path to enlightenment."))
 
@@ -378,15 +378,15 @@
 /datum/advclass/sfighter/amazon
 	name = "Amazon"
 	tutorial = "Fierce warrior women from distant lands, Amazons choose their armor based on their preferred fighting style - from light and agile to heavily protected."
-	outfit = /datum/outfit/job/roguetown/adventurer/amazon
+	outfit = /datum/outfit/job/adventurer/amazon
 	traits_applied = list(TRAIT_STEELHEARTED)
 	subclass_stats = list()
 	subclass_social_rank = SOCIAL_RANK_DIRT
 
-/datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/adventurer/amazon/pre_equip(mob/living/carbon/human/H, visualsOnly)
 
 	var/armor_styles = list("Leather Kini","Hide Armor Kini","Studded Leather Kini","Half Plate Kini","Plate Kini")
-	var/armor_choice = input("Choose your armor style", "Available armor styles") as anything in armor_styles
+	var/armor_choice = input(H, "Choose your armor style", "Available armor styles") as anything in armor_styles
 
 	switch(armor_choice)
 
@@ -419,7 +419,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 			var/weapons = list("Steel Knuckles","Axe","Sword","Whip","Spear","MY BARE HANDS!!!")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if ("Steel Knuckles")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -471,7 +471,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 			var/weapons = list("Steel Knuckles","Axe","Sword","Whip","Spear","MY BARE HANDS!!!")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if ("Steel Knuckles")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -522,7 +522,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 			var/weapons = list("Katar","Rapier","Whip","Billhook","MY BARE HANDS!!!")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if ("Katar")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -569,7 +569,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			var/weapons = list("Great Sword","Eagle's Beak","Battle Axe","MY BARE HANDS!!!")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Great Sword")
 					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -614,7 +614,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/recipe_book/survival = 1)
 			var/weapons = list("Sword and Tower Shield","Mace and Tower Shield","TWO TOWER SHIELDS!!!")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Sword and Tower Shield")
 					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)

@@ -5,6 +5,8 @@
 	ambushable = FALSE
 	skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/moss_skin
 
+/mob/living/carbon/human/species/wildshape/dendormole/death(gibbed, nocutscene = FALSE)
+	wildshape_untransform(TRUE, gibbed)
 
 //BUCKLING
 /mob/living/carbon/human/species/wildshape/dendormole/buckle_mob(mob/living/target, force = TRUE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0)
@@ -27,7 +29,7 @@
 		src.STASPD = 13
 
 		AddSpell(new /obj/effect/proc_holder/spell/self/moleclaw)
-		real_name = "Moss Crawler ([stored_mob.real_name])" //So we don't get a random name
+		real_name = "Moss Crawler ([stored_mob.real_name])" //Preserve original character name
 
 
 // dendormole SPECIES DATUM //
@@ -177,11 +179,11 @@
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/moleclaw
-	name = "REDUCE THEM TO DECAY"
-	desc = "!"
+	name = "Burrow Claws"
+	desc = "Extend your digging claws."
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
-	recharge_time = 40 //4 seconds
+	recharge_time = 40
 	ignore_cockblock = TRUE	
 	var/extended = FALSE
 

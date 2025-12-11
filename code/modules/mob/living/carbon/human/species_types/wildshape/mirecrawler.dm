@@ -5,6 +5,9 @@
 	ambushable = FALSE
 	skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/spider_skin
 
+/mob/living/carbon/human/species/wildshape/mirecrawler/death(gibbed, nocutscene = FALSE)
+	wildshape_untransform(TRUE, gibbed)
+
 /mob/living/carbon/human/species/wildshape/mirecrawler/gain_inherent_skills()
 	. = ..()
 	if(src.mind)
@@ -21,9 +24,10 @@
 		src.STAINT = 9 //Tiny spider brain.
 		src.STAPER = 15
 		src.STASPD = 15
+		update_move_intent_slowdown() // Apply speed changes
 
 		AddSpell(new /obj/effect/proc_holder/spell/self/spiderfangs/mire)
-		real_name = "Mire Crawler ([stored_mob.real_name])" //So we don't get a random name
+		real_name = "Lesser Mire Crawler ([stored_mob.real_name])" //Preserve original character name
 
 
 // mirecrawler SPECIES DATUM //
