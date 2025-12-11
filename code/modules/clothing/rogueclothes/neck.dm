@@ -710,6 +710,5 @@
 /obj/item/clothing/neck/roguetown/gorget/steel/ogre
 	name = "giant steel gorget"
 	desc = "For the hardest working neck in the province, since you know people are going to target it first."
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x64/ogre_onmob.dmi'
 	icon_state = "ogre_gorget"
 	allowed_race = OGRE_RACE_TYPES

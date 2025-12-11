@@ -504,6 +504,7 @@
 	allowed_race = OGRE_RACE_TYPES
 	max_integrity = 250
 	armor = ARMOR_BOOTS_PLATED_IRON
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 
 /obj/item/clothing/shoes/roguetown/boots/ogre
 	name = "oversized boots"
