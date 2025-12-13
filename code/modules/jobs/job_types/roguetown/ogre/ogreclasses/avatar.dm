@@ -33,7 +33,7 @@
 		H.set_patron(/datum/patron/inhumen/graggar) // why would you be an avatar of graggar without following graggar
 		to_chat(H, span_warning("Do what comes naturally."))
 		shoes = /obj/item/clothing/shoes/roguetown/armor/ogre
-		neck = /obj/item/clothing/neck/roguetown/gorget/steel/ogre
+		neck = /obj/item/clothing/neck/roguetown/gorget/ogre
 		pants = /obj/item/clothing/under/roguetown/chainlegs/ogre
 		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ogre
 		gloves = /obj/item/clothing/gloves/roguetown/plate/ogre

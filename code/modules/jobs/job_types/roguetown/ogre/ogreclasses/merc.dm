@@ -35,7 +35,7 @@
 		to_chat(H, span_warning("Hailing from Gronn, you've learned that ogres are tolerated if they provide their massive strength to others, and coin can help you get more ale and meat if you got enough of it. You've come to Scarlet Reach with a simple goal. Get paid, get food."))
 		shoes = /obj/item/clothing/shoes/roguetown/armor/ogre
 		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ogre
-		neck = /obj/item/clothing/neck/roguetown/gorget/steel/ogre
+		neck = /obj/item/clothing/neck/roguetown/gorget/ogre
 		pants = /obj/item/clothing/under/roguetown/chainlegs/ogre
 		gloves = /obj/item/clothing/gloves/roguetown/plate/ogre
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/ogre

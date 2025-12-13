@@ -1080,9 +1080,9 @@
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
 	created_item = /obj/item/clothing/wrists/roguetown/bracers/ogre
 
-/datum/anvil_recipe/armor/steel/ogregorget
+/datum/anvil_recipe/armor/iron/ogregorget
 	name = "Ogre plate gorget (+2 Iron)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
-	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/ogre
+	created_item = /obj/item/clothing/neck/roguetown/gorget/ogre
 
