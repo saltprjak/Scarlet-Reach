@@ -62,6 +62,7 @@
 	var/aghost_toggle
 	var/charge_start_time = 0
 	var/charge_start_timeofday = 0
+	var/last_cooldown_warn = 0
 
 /atom
 	var/blockscharging = FALSE
@@ -91,9 +92,15 @@
 
 	var/delay = mob.CanMobAutoclick(object, location, params)
 
+	var/was_charging = charging
+
 	mob.atkswinging = null
 	charging = 0
 	chargedprog = 0
+
+	if(was_charging)
+		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
+		return
 
 	if(!mob.fixedeye)
 		mob.tempfixeye = TRUE
@@ -121,9 +128,6 @@
 
 /client/proc/handle_right_click(atom/object, location, control, params, list/modifiers)
 	mob.face_atom(object, location, control, params)
-	if(modifiers["left"])
-		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
-		return
 
 	mob.atkswinging = "right"
 	if(mob.oactive)
