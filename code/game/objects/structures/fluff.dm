@@ -955,14 +955,15 @@
 					var/mob/living/L = user
 					user.visible_message(span_notice("[user] begins training on [src]..."))
 					while(do_after(user, 2 SECONDS, target = src))
+						if(!(L.mobility_flags & MOBILITY_STAND))
+							to_chat(user, span_warning("You are knocked down and stop training."))
+							break
 						var/probby = (L.STALUC / 10) * 100
 						probby = min(probby, 99)
 						user.changeNext_move(CLICK_CD_MELEE)
 						if(W.max_blade_int)
 							W.remove_bintegrity(5)
 						L.stamina_add(rand(4,6))
-						if(!(L.mobility_flags & MOBILITY_STAND))
-							probby = 0
 						if(L.STAINT < 3)
 							probby = 0
 						if(!can_train_combat_skill(user, W.associated_skill, SKILL_LEVEL_APPRENTICE))
