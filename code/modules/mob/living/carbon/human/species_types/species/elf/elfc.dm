@@ -29,7 +29,7 @@
 	are vain or power-hungry, and they tend to have imperious and assertive personalities. \
 	It is a common sentiment among Sun Elves that they are the 'chosen' of Astrata, leading \
 	to a great deal of condescension or disdain toward those races deemed 'lesser.'<br>\
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD</b></span> </br>"
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 PER +1 INT</b></span> </br>"
 
 
 	skin_tone_wording = "Skintone"
@@ -61,7 +61,7 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_SPEED = 1)
+	race_bonus = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 1)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -126,6 +126,8 @@
 		"Evening" = SKIN_COLOR_EVENING,
 		"Sunset" = SKIN_COLOR_SUNSET,
 		"Dusk" = SKIN_COLOR_DUSK,
+		"Gilded" = SKIN_COLOR_GILDED,
+		"Brass" = SKIN_COLOR_BRASS,
 	)
 
 /datum/species/elf/sun/get_skin_list_tooltip()
@@ -136,6 +138,8 @@
 		"Evening <span style='border: 1px solid #161616; background-color: #[SKIN_COLOR_EVENING];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = SKIN_COLOR_EVENING,
 		"Sunset <span style='border: 1px solid #161616; background-color: #[SKIN_COLOR_SUNSET];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = SKIN_COLOR_SUNSET,
 		"Dusk <span style='border: 1px solid #161616; background-color: #[SKIN_COLOR_DUSK];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = SKIN_COLOR_DUSK,
+		"Gilded <span style='border: 1px solid #161616; background-color: #[SKIN_COLOR_GILDED];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = SKIN_COLOR_GILDED,
+		"Brass <span style='border: 1px solid #161616; background-color: #[SKIN_COLOR_BRASS];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = SKIN_COLOR_BRASS,
 	)
 
 /datum/species/elf/sun/get_hairc_list()
