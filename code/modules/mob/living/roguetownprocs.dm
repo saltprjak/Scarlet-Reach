@@ -551,8 +551,6 @@
 			if(src.client)
 				record_round_statistic(STATS_PARRIES)
 
-			var/def_verb = "parries"
-			var/att_verb = ""
 			if(istype(rmb_intent, /datum/rmb_intent/riposte))
 				src.visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [W]!"))
 			else

@@ -222,6 +222,7 @@
 	var/ourskill = 0
 	var/theirskill = 0
 	var/skill_factor = 0
+	var/feintdur = 7.5 SECONDS
 	if(I)
 		if(I.associated_skill)
 			ourskill = user.get_skill_level(I.associated_skill)
