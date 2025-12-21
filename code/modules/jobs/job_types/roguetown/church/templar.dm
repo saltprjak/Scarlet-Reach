@@ -248,8 +248,13 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
 			cloak = /obj/item/clothing/cloak/templar/astratan
+			var/astrata_helmets = list(
+				"Astratan Helmet" = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm,
+				"Astratan Bucket Helmet" = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
+			)
+			var/astrata_choice = input(H, "Choose your helmet.", "Patron's Gift") as anything in astrata_helmets
+			head = astrata_helmets[astrata_choice]
 		if(/datum/patron/divine/abyssor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
@@ -264,8 +269,13 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if(/datum/patron/divine/necra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/necran
 			cloak = /obj/item/clothing/cloak/templar/necran
+			var/necra_helmets = list(
+				"Necran Helmet" = /obj/item/clothing/head/roguetown/helmet/heavy/necran,
+				"Necran Skull Helmet" = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+			)
+			var/necra_choice = input(H, "Choose your helmet.", "Patron's Gift") as anything in necra_helmets
+			head = necra_helmets[necra_choice]
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestran
