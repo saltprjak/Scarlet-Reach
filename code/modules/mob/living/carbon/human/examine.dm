@@ -1084,6 +1084,8 @@
 				if(-INFINITY to -5)
 					output += "<BR>They look as blunt-minded as a rock."
 
+	return output
+
 /mob/living/carbon/human/proc/generate_strata(mob/user)
 	var/is_clergy = FALSE
 	var/is_jester = FALSE
