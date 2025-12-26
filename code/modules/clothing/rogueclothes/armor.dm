@@ -835,6 +835,28 @@
 	item_state = "ornatehauberk"
 	max_integrity = 350
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios
+	name = "gilded hauberk"
+	desc = "All that glimmers is gold; yet only shining stars shalt break the mold.."
+	color = "#ffc960"
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+
+//
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
+	name = "darksteel hauberk"
+	desc = "The rings crackle with unkempt magicka, yearning to enamor the enlightened with darksteel might."
+	color = "#c1b18d"
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+
+//
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
 	name = "vicious hauberk"
 	desc = "The blessing of a Martyr is nothing, when put before the Sinistar's rage."

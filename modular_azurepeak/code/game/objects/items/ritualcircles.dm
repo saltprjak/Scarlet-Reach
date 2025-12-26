@@ -832,12 +832,14 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 	pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/zizo
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 	gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
 	backr = /obj/item/rogueweapon/sword/long/zizo
-	neck = /obj/item/clothing/neck/roguetown/bevor
+	neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 
 
 /obj/structure/ritualcircle/zizo/proc/rituosbone(mob/living/carbon/human/target)
@@ -988,11 +990,13 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/matthios
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios
 	pants = /obj/item/clothing/under/roguetown/platelegs/matthios
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/matthios
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/matthios
 	gloves = /obj/item/clothing/gloves/roguetown/plate/matthios
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/matthios
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios
 	backr = /obj/item/rogueweapon/flail/peasantwarflail/matthios
 
 /obj/structure/ritualcircle/graggar
